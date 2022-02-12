@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#F1EDED"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GroupChatActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/colorPhoneLoginPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/groupIconIv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_profile"/>
+
+        <TextView
+            android:id="@+id/groupTitleTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/groupIconIv"
+            android:text="Grup İsmi"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/colorWhite"
+            android:layout_centerVertical="true"
+            android:textSize="18sp"
+            android:textStyle="bold"></TextView>
+    </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatRv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/chatLayout"
+        android:layout_below="@id/toolbar"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:stackFromEnd="true"
+        tools:listitem="@layout/row_groupchat_left" />
+
+
+
+    <RelativeLayout
+        android:id="@+id/chatLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/background_light"
+        android:orientation="horizontal"
+        >
+
+
+        <EditText
+            android:id="@+id/input_group_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Bir Mesaj Yazın"
+            android:padding="15dp"
+            android:maxLines="5"
+            android:layout_toStartOf="@+id/send_group_message_file_btn"
+
+            />
+        <ImageButton
+            android:id="@+id/send_group_message_file_btn"
+            android:layout_width="35dp"
+            android:layout_height="55dp"
+            android:src="@drawable/send_file"
+            android:layout_toStartOf="@+id/send_group_message_btn"
+            android:backgroundTint="@android:color/white"
+            />
+        <ImageButton
+            android:id="@+id/send_group_message_btn"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/send_message_icon"
+            android:layout_alignParentEnd="true"
+            android:backgroundTint="@android:color/white"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

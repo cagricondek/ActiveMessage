@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#006258</color>
+    <color name="colorPrimaryDark">#005048</color>
+    <color name="colorAccent">#E6E6E6</color>
+    <color name="colorRed">#DF2222</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGray">#CCCCCC</color>
+    <color name="colorPhoneLogin">#1B3E5D</color>
+    <color name="colorPhoneLoginPrimary">#535DFE</color>
+    <color name="colorPhoneLoginPrimaryDark">#1B3E5D</color>
+    <color name="colorPhoneLoginAccent">#F44336</color>
+    <color name="colorPhoneLoginTextPrimary">#212121</color>
+    <color name="colorPhoneLoginTextSecondary">#757575</color>
+    <color name="colorDivider">#BDBDBD</color>
+    <color name="icon_color_Primary">#FF9301</color>
+    <color name="ic_profile_edit">#D60B85</color>
+
+</resources>

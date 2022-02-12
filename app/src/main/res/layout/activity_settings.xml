@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".SettingsActivity">
+<include
+    layout="@layout/app_bar_layout"
+    android:id="@+id/settings_toolbar"
+    ></include>
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileImageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_margin="0dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardCornerRadius="75dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/ic_edit_profile_add_photo">
+    </de.hdodenhof.circleimageview.CircleImageView>
+    <EditText
+        android:id="@+id/edit_profile_username"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:hint="Kullanıcı Adı:"
+        android:layout_margin="0dp"
+        android:drawablePadding="8dp"
+        android:textColor="@color/colorPhoneLoginTextPrimary"
+        android:textSize="16sp"
+        android:drawableLeft="@drawable/ic_edit_profile_username"
+        >
+    </EditText>
+    <EditText
+        android:id="@+id/edit_profile_fullname"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:hint="Ad Soyad:"
+        android:layout_margin="1dp"
+        android:drawablePadding="8dp"
+        android:textColor="@color/colorPhoneLoginTextPrimary"
+        android:textSize="16sp"
+        android:drawableLeft="@drawable/ic_profile_edit">
+    </EditText>
+
+    <EditText
+        android:id="@+id/edit_profile_phone"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:hint="Telefon:"
+        android:drawablePadding="8dp"
+        android:textColor="@color/colorPhoneLoginTextPrimary"
+        android:textSize="16sp"
+        android:drawableLeft="@drawable/ic_edit_profile_phone"
+        android:inputType="number">
+    </EditText>
+
+    <EditText
+        android:id="@+id/edit_profile_email"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:drawableLeft="@drawable/ic_edit_profile_mail"
+        android:drawablePadding="8dp"
+        android:hint="Email:"
+        android:textColor="@color/colorPhoneLoginTextPrimary"
+        android:textSize="16sp"></EditText>
+
+    <EditText
+        android:id="@+id/edit_profile_address"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:hint="Adres:"
+        android:drawablePadding="8dp"
+        android:textColor="@color/colorPhoneLoginTextPrimary"
+        android:textSize="16sp"
+        android:drawableLeft="@drawable/ic_edit_profile_address"
+        >
+    </EditText>
+    <EditText
+        android:id="@+id/edit_profile_profession"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:hint="Meslek:"
+        android:drawablePadding="8dp"
+        android:textColor="@color/colorPhoneLoginTextPrimary"
+        android:textSize="16sp"
+        android:drawableLeft="@drawable/job_icon"
+        >
+    </EditText>
+    <Button
+        android:id="@+id/edit_profile_save_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Kaydet"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        android:background="@drawable/btn_bg"
+        android:backgroundTint="@color/colorPhoneLogin">
+    </Button>
+    <ProgressBar
+        android:id="@+id/edit_profile_progressbar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:outlineAmbientShadowColor="@color/colorPhoneLoginTextPrimary"
+        android:outlineSpotShadowColor="@color/colorPhoneLoginTextPrimary"
+        android:visibility="invisible"
+        android:indeterminateTint="@color/colorRed">
+    </ProgressBar>
+
+    <TextView
+        android:id="@+id/edit_profile_progressbar_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profil Bilgileri Kaydediliyor..."
+        android:visibility="invisible"></TextView>
+
+
+</LinearLayout>

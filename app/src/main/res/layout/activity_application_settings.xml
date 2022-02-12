@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ApplicationSettingsActivity">
+
+    <include
+        android:id="@+id/application_settings_toolbar"
+        layout="@layout/app_bar_layout"></include>
+
+    <ImageView
+        android:id="@+id/hesap"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/application_settings_toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="320dp"
+        android:layout_marginBottom="501dp"
+        android:padding="10dp"
+        android:src="@drawable/profile"></ImageView>
+
+    <TextView
+        android:id="@+id/Hesap"
+        android:layout_width="62dp"
+        android:layout_height="28dp"
+        android:layout_below="@+id/application_settings_toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="245dp"
+        android:layout_marginBottom="535dp"
+        android:layout_toStartOf="@+id/hesap"
+        android:text="Hesap"
+        android:textColor="@color/colorPhoneLoginTextPrimary"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/HesapDescription"
+        android:layout_width="201dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="107dp"
+        android:layout_marginEnd="103dp"
+        android:layout_marginBottom="516dp"
+        android:text="Hesap İşlemleri, Şifre Değiştir"
+        android:textColor="@color/colorDivider"
+        android:textSize="13sp" />
+
+    <ImageView
+        android:id="@+id/tema"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/application_settings_toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="131dp"
+        android:layout_marginEnd="315dp"
+        android:layout_marginBottom="424dp"
+        android:src="@drawable/theme_icon"></ImageView>
+
+    <TextView
+        android:id="@+id/Tema"
+        android:layout_width="82dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/application_settings_toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginEnd="224dp"
+        android:layout_marginBottom="446dp"
+        android:text="Temalar"
+        android:textColor="@color/colorPhoneLoginTextPrimary"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/temaDescription"
+        android:layout_width="139dp"
+        android:layout_height="21dp"
+        android:layout_below="@+id/application_settings_toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginEnd="167dp"
+        android:layout_marginBottom="429dp"
+        android:text="Temalar, Duvar Kağıdı"
+        android:textColor="@color/colorDivider"
+        android:textSize="13sp" />
+
+    <ImageView
+        android:id="@+id/bildirimler"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/application_settings_toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="330dp"
+        android:layout_marginBottom="345dp"
+        android:src="@drawable/ic_bildirimler"></ImageView>
+
+    <TextView
+        android:id="@+id/Bildirimler"
+        android:layout_width="102dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/application_settings_toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="210dp"
+        android:layout_marginEnd="203dp"
+        android:layout_marginBottom="367dp"
+        android:text="Bildirimler"
+        android:textColor="@color/colorPhoneLoginTextPrimary"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/bildirimlerDescription"
+        android:layout_width="173dp"
+        android:layout_height="21dp"
+        android:layout_below="@+id/application_settings_toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="233dp"
+        android:layout_marginEnd="131dp"
+        android:layout_marginBottom="350dp"
+        android:text="Mesaj, Arama Bildirimleri"
+        android:textColor="@color/colorDivider"
+        android:textSize="13sp" />
+
+
+    <ImageView
+        android:id="@+id/yardım"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/application_settings_toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="290dp"
+        android:layout_marginEnd="330dp"
+        android:layout_marginBottom="280dp"
+        android:src="@drawable/ic_yardim"></ImageView>
+
+    <TextView
+        android:id="@+id/Yardım"
+        android:layout_width="102dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/application_settings_toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="288dp"
+        android:layout_marginEnd="203dp"
+        android:layout_marginBottom="280dp"
+        android:text="Yardım"
+        android:textColor="@color/colorPhoneLoginTextPrimary"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/yardımDescription"
+        android:layout_width="173dp"
+        android:layout_height="21dp"
+        android:layout_below="@+id/application_settings_toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="109dp"
+        android:layout_marginTop="310dp"
+        android:layout_marginEnd="180dp"
+        android:layout_marginBottom="280dp"
+        android:text="Yardım"
+        android:textColor="@color/colorDivider"
+        android:textSize="13sp" />
+
+</RelativeLayout>

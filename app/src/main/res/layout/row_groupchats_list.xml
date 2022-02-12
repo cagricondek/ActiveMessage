@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:contentPadding="3dp"
+    android:layout_marginTop="1dp">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/groupIconIv"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/ic_profile"/>
+
+    <TextView
+        android:id="@+id/groupTitleTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:text="Grup İsmi"
+        android:layout_toEndOf="@+id/groupIconIv"
+        android:textSize="18sp"
+        android:textColor="@color/colorPhoneLoginTextPrimary"></TextView>
+
+    <TextView
+        android:id="@+id/nameTv"
+        android:layout_toEndOf="@+id/groupIconIv"
+        android:layout_below="@+id/groupTitleTV"
+        android:layout_marginStart="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gönderici Adı:"
+        android:textColor="@color/colorPhoneLoginTextPrimary"></TextView>
+
+    <TextView
+        android:id="@+id/messageTv"
+        android:layout_toEndOf="@+id/nameTv"
+        android:layout_below="@+id/groupTitleTV"
+        android:layout_marginStart="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mesaj"
+        android:singleLine="true"></TextView>
+    <TextView
+        android:id="@+id/timeTv"
+        android:layout_below="@+id/nameTv"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12:12 PM"
+        android:singleLine="true"></TextView>
+
+</RelativeLayout>
+</androidx.cardview.widget.CardView>
