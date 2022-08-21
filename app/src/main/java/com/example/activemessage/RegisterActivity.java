@@ -17,7 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -39,7 +39,7 @@ private ProgressDialog loadingBar;
         InitializeFields();
 
 
-/*register ve login menu geçişi tiklayinca*/
+/*register ve login menu */
 AlreadyHaveAccountLink.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v)
@@ -48,7 +48,7 @@ AlreadyHaveAccountLink.setOnClickListener(new View.OnClickListener() {
 
          }
     });
-    /*kayit ol butona tiklayinca*/
+    /*kayit ol butonu*/
     CreateAccountButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) 
@@ -58,7 +58,7 @@ AlreadyHaveAccountLink.setOnClickListener(new View.OnClickListener() {
     });
 
     }
-/*yeni hesap oluşturma*/
+/*new account create*/
     private void CreateNewAccount()
     {   String username=UserName.getText().toString();
         String email=UserEmail.getText().toString();
@@ -66,32 +66,39 @@ AlreadyHaveAccountLink.setOnClickListener(new View.OnClickListener() {
         String conform_password=UserConformPassword.getText().toString();
         if(TextUtils.isEmpty(email))
         {
-            Toast.makeText(this,"Lütfen geçerli bir email giriniz!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"LÃ¼tfen geÃ§erli bir email giriniz!",Toast.LENGTH_SHORT).show();
         }
         if(TextUtils.isEmpty(password))
         {
-            Toast.makeText(this,"Lütfen geçerli bir şifre giriniz!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"LÃ¼tfen geÃ§erli bir ÅŸifre giriniz!",Toast.LENGTH_SHORT).show();
         }
         else
-            {   loadingBar.setTitle("Kayıt Ol");
-                loadingBar.setMessage("Kayıt Oluşturuluyor,Lütfen Bekleyiniz...");
+            {   loadingBar.setTitle("KayÄ±t Ol");
+                loadingBar.setMessage("KayÄ±t OluÅŸturuluyor,LÃ¼tfen Bekleyiniz...");
                 loadingBar.setCanceledOnTouchOutside(false);
                 loadingBar.show();
-                /*firebase kayit olma*/
+                /*firebase register with email pass*/
                 mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task)
                     {
                         if (task.isSuccessful())
                         {
-                            String deviceToken= FirebaseInstanceId.getInstance().getToken();
+                            FirebaseMessaging.getInstance().getToken()
+                                    .addOnCompleteListener(new OnCompleteListener<String>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<String> task) {
+                                            if (!task.isSuccessful()) {
+                                            }
+                                            String deviceToken = task.getResult();
                             String currentUserID=mAuth.getCurrentUser().getUid();
                             RootRef.child("Users").child(currentUserID).setValue("");
                             RootRef.child("Users").child(currentUserID).child("device_token").setValue(deviceToken);
-
+                                        }
+                                    });
 
                             SendUserToMainActivity();
-                            Toast.makeText(RegisterActivity.this,"Başarıyla Kayıt Oluşturdunuz...",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this,"BaÅŸarÄ±yla KayÄ±t OluÅŸturdunuz...",Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
                         }
                         else
@@ -107,7 +114,7 @@ AlreadyHaveAccountLink.setOnClickListener(new View.OnClickListener() {
     }
 
 
-    /*data tanimlari*/
+    /*data init*/
     private void InitializeFields() {
         CreateAccountButton=(Button) findViewById(R.id.register_button);
         UserName=(EditText) findViewById(R.id.register_username);
@@ -117,14 +124,14 @@ AlreadyHaveAccountLink.setOnClickListener(new View.OnClickListener() {
         AlreadyHaveAccountLink=(TextView) findViewById(R.id.alreadyHaveAccount);
         loadingBar=new ProgressDialog(this);
     }
-    /*menu geçiş methodu*/
+    /*menu gecis*/
     private void SendUserToLoginActivity()
     {
         Intent loginIntent=new Intent(RegisterActivity.this,LoginActivity.class);
         startActivity(loginIntent);
     }
 
-    /*main ekranina yollama methodu*/
+    /*main back*/
     private void SendUserToMainActivity() {
         Intent mainIntent=new Intent(RegisterActivity.this,MainActivity.class);
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
