@@ -21,7 +21,7 @@
  </p>
 <h2 align="left">Download</h2>
 <p align="left">  
-<a href="https://easyupload.io/xh4kkl" download>Click to Download</a><br>
+<a href="https://easyupload.io/xh4kkl" download>app-debug.apk</a><br>
 
 
 
