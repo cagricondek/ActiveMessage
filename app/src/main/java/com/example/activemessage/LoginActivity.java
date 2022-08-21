@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ForgetPasswordLink=findViewById(R.id.forgot_password_link);
-
+/*for google account sign in*/
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
         UsersRef=FirebaseDatabase.getInstance().getReference().child("Users");
          InitializeFields();
-
+/*create new account link*/
         NeedNewAccountLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -69,14 +69,14 @@ public class LoginActivity extends AppCompatActivity {
                 SendUserToRegisterActivity();
             }
         });
-        /*LoginButton tiklayinca*/
+        
         LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AllowUserToLogin();
             }
         });
-        /*Telefon LoginButton tiklayinca*/
+ /*for phone login intent*/
         PhoneLoginButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -87,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+       
         ForgetPasswordLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,11 +102,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
+ /*foget password recovery a browser link*/
     private void showRecoverPasswordDialog()
     {
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        builder.setTitle("Åifremi Unuttum");
+        builder.setTitle("Sifremi Unuttum");
 
         LinearLayout linearLayout=new LinearLayout(this);
         EditText emailGir=new EditText(this);
@@ -117,14 +118,14 @@ public class LoginActivity extends AppCompatActivity {
         builder.setView(linearLayout);
 
 
-        builder.setPositiveButton("SÄ±fÄ±rla", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Sifirla", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
             String email=emailGir.getText().toString().trim();
             beginRecovery(email);
             }
         });
-        builder.setNegativeButton("Ä°ptal", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Iptal", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
             dialog.dismiss();
@@ -132,9 +133,9 @@ public class LoginActivity extends AppCompatActivity {
         });
         builder.create().show();
     }
-
+ /*new password recovery link email sender*/
     private void beginRecovery(String email) {
-        loadingBar.setMessage("Åifre GÃ¶nderiliyor...");
+        loadingBar.setMessage("Sifre Gonderiliyor...");
         loadingBar.show();
         mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -157,7 +158,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    /*user login check*/
+    /*Check email and password edittext for login to user*/
     private void AllowUserToLogin()
     {
         String email=UserEmail.getText().toString();
@@ -226,7 +227,7 @@ public class LoginActivity extends AppCompatActivity {
             }
     }
 
-    /*data tanimlari*/
+    /*some init*/
     private void InitializeFields()
     {   GoogleButton=(Button) findViewById(R.id.btnGoogle);
 
@@ -260,7 +261,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+         /*google sign in device token */
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
@@ -283,11 +284,11 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, ""+user.getEmail(), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LoginActivity.this,SettingsActivity.class));
                             finish();
-                            //updateUI(user);
+                           
                         } else {
 
                             Toast.makeText(LoginActivity.this, "GiriÅŸ BaÅŸarÄ±sÄ±z!", Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
+                           
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
