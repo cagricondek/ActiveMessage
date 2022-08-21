@@ -137,10 +137,10 @@ private ImageButton send_pdf_btn,send_picture_btn,send_camera_file_btn,send_voic
                 Toast.makeText(ChatActivity.this, "Henüz Aktif Değil.", Toast.LENGTH_SHORT).show();
             }
         });
-
+                    /*click files button for files framelayout*/
                 SendFilesButton.setOnClickListener(new View.OnClickListener() {
                     boolean isPressed = false;
-
+                         /*check files framelayout state*/
                     @Override
                     public void onClick(View v) {
                         if (isPressed == false) {
@@ -152,7 +152,7 @@ private ImageButton send_pdf_btn,send_picture_btn,send_camera_file_btn,send_voic
                         }
                     }
                 });
-
+                        /*intent for pick image on device storage*/
                     send_picture_btn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -167,7 +167,7 @@ private ImageButton send_pdf_btn,send_picture_btn,send_camera_file_btn,send_voic
                             });
 
 
-
+                    /*intent for pick document on device storage*/
                     send_pdf_btn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -180,7 +180,7 @@ private ImageButton send_pdf_btn,send_picture_btn,send_camera_file_btn,send_voic
                           }
                           });
 
-
+                        /*intent for pick word document on device storage*/
                     send_document_file_btn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -192,7 +192,7 @@ private ImageButton send_pdf_btn,send_picture_btn,send_camera_file_btn,send_voic
                             file_frame_layout.setVisibility(View.INVISIBLE);
                         }
                           });
-
+                        /*intent for camera capture on device storage*/
                     send_camera_file_btn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -204,25 +204,21 @@ private ImageButton send_pdf_btn,send_picture_btn,send_camera_file_btn,send_voic
 
                         }
                     });
+        
                     send_voice_file_btn.setOnClickListener(new View.OnClickListener() {
                          @Override
                       public void onClick(View v) {
 
-
-
-
-                            Toast.makeText(ChatActivity.this, "ses dosyasi", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ChatActivity.this, "henuz aktif degil", Toast.LENGTH_SHORT).show();
                      }
                          });
     }
 
+     /*phonecall on device*/
     private void PhoneCalls() {
-
         RootRef.child("Users").child(messageReceiverID).addValueEventListener(new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-
 
             String phoneNumberHolder = snapshot.child("phone").getValue().toString();
             try {
@@ -247,7 +243,7 @@ private ImageButton send_pdf_btn,send_picture_btn,send_camera_file_btn,send_voic
     }
 
 
-
+    /*init some variables*/
     private void IntializeControllers()
     {
     file_frame_layout=(FrameLayout)findViewById(R.id.file_frame_layout);
@@ -287,6 +283,7 @@ private ImageButton send_pdf_btn,send_picture_btn,send_camera_file_btn,send_voic
         chatOptionsMenu=(ImageButton)findViewById(R.id.chatOptionsMenu);
     }
 
+    /*sending picture from gallery with device permission*/
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -297,6 +294,7 @@ private ImageButton send_pdf_btn,send_picture_btn,send_camera_file_btn,send_voic
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
             fileUri=data.getData();
+            /*sending message other users*/
             if (!checker.equals("image"))
             {
                 StorageReference storageReference= FirebaseStorage.getInstance().getReference().child("Document Files");
@@ -311,6 +309,7 @@ private ImageButton send_pdf_btn,send_picture_btn,send_camera_file_btn,send_voic
                     public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                     if (task.isSuccessful())
                     {
+                        /*firebase saving messages with time infos*/
                         Map messageTextBody= new HashMap();
                         messageTextBody.put("message",task.getResult().getStorage().toString());
                         messageTextBody.put("name",fileUri.getLastPathSegment());
@@ -338,11 +337,13 @@ private ImageButton send_pdf_btn,send_picture_btn,send_camera_file_btn,send_voic
                     @Override
                     public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot)
                     {
+                        /*for the send file showing percent*/
                        double p=(100.0*snapshot.getBytesTransferred()) / snapshot.getTotalByteCount();
                        loadingBar.setMessage((int) p + " % Yükleniyor...");
                     }
                 });
             }
+             /*image sending with firebase storage*/
             else if (checker.equals("image"))
             {
                 StorageReference storageReference= FirebaseStorage.getInstance().getReference().child("Image Files");
@@ -415,7 +416,7 @@ private ImageButton send_pdf_btn,send_picture_btn,send_camera_file_btn,send_voic
             }
         }
     }
-
+        /*Showing user online/offline info also last seen state*/
     private void DisplayLastSeen()
     {
         RootRef.child("Users").child(messageReceiverID).addValueEventListener(new ValueEventListener() {
@@ -453,7 +454,7 @@ private ImageButton send_pdf_btn,send_picture_btn,send_camera_file_btn,send_voic
             }
         });
     }
-
+        /*List the messages with MessageAdapter*/
     @Override
     protected void onStart() {
         super.onStart();
@@ -490,7 +491,7 @@ private ImageButton send_pdf_btn,send_picture_btn,send_camera_file_btn,send_voic
                     }
                 });
     }
-
+ /*Send Message method*/
     private  void  SendMessage()
     {
         String messageText=MessageInputText.getText().toString();
@@ -502,9 +503,10 @@ private ImageButton send_pdf_btn,send_picture_btn,send_camera_file_btn,send_voic
         {
             String messageSenderRef="Messages/" + messageSenderID + "/" + messageReceiverID;
             String messageReceiverRef="Messages/" + messageReceiverID + "/" + messageSenderID;
-            /*her mesaj için özel bir key oluştur*/
+            /*push key for each messageSender-> messageReceiver*/
             DatabaseReference userMessageKeyRef=RootRef.child("Messages")
                     .child(messageSenderID).child(messageReceiverID).push();
+             /*take this key on a string*/
             String messagePushID=userMessageKeyRef.getKey();
 
             Map messageTextBody= new HashMap();
