@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     }
-    /*kullanici durumuna gore activityler*/
+    /*user status*/
     @Override
     protected void onStart()
     {
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             VerifyUserExistance();
         }
     }
-/*user offline ise*/
+/*user offline */
     @Override
     protected void onStop() {
         super.onStop();
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             updateUserStatus("Çevrimdışı");
         }
     }
-    /*uygulama çökerse*/
+    
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -127,11 +127,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    /*giriş yapmiş kullanici */
+    /*after login */
     private void VerifyUserExistance()
     {
         String currentUserID = mAuth.getCurrentUser().getUid();
-        /*userid eşleşiyor mu diye kontrol ediyoruz*/
+        /*firebase userid referance*/
         RootRef.child("Users").child(currentUserID).addValueEventListener(new ValueEventListener()
         {
             @Override
@@ -139,6 +139,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             {
                 if ((snapshot.child("fullname").exists()))
                 {
+                    /*drawer menu profil bilgileri*/
                     profileImageUrlV=snapshot.child("profileImage").getValue().toString();
                     usernameV=snapshot.child("fullname").getValue().toString();
                     Picasso.get().load(profileImageUrlV).into(profileImageHeader);
@@ -164,7 +165,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-    /*sağ ust  menu*/
+  
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -176,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-
+/*some intents*/
     private void SendUserToLoginActivity() {
         Intent loginIntent=new Intent(MainActivity.this,LoginActivity.class);
         loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -209,6 +210,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         startActivity(applicationSettingIntent);
     }
 
+    /*chat fragment user  status*/
     private void updateUserStatus(String state)
     {
         String saveCurrentTime, saveCurrentDate;
@@ -254,7 +256,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         return true;
     }
-    /*sağ ust  menu secim*/
+    /*menu options*/
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item)
     {
