@@ -1,2 +1,1 @@
-                                                              ACTIVEMESSAGE
-                                                      Çevrimiçi Mesajlaşma Uygulaması
+
