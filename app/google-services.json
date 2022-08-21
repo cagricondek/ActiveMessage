@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "734101582500",
-    "firebase_url": "https://activemessage-37887-default-rtdb.europe-west1.firebasedatabase.app",
-    "project_id": "activemessage-37887",
-    "storage_bucket": "activemessage-37887.appspot.com"
+    "project_number": "280051661444",
+    "firebase_url": "https://activemessage-real-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "activemessage-real",
+    "storage_bucket": "activemessage-real.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:734101582500:android:28dfe22e54d17bee70ac31",
+        "mobilesdk_app_id": "1:280051661444:android:3e8ae8c734cbcfc080a0d1",
         "android_client_info": {
           "package_name": "com.example.activemessage"
         }
       },
       "oauth_client": [
         {
-          "client_id": "734101582500-5fligaqvdbsj58h4n8nqo1jp646qvvaj.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.activemessage",
-            "certificate_hash": "757a187a0c4a70b6472e27b56f4cc12418822330"
-          }
-        },
-        {
-          "client_id": "734101582500-tmp74c3c1vupth5h8cq5phm38lqqm0tk.apps.googleusercontent.com",
+          "client_id": "280051661444-h2o9cuinevmev5d8fft11sjba946ohs9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD3HOXCFErOKVebniwQDmzPWhKhAYdxh9o"
+          "current_key": "AIzaSyAJ2rLPnPpRMhhGf_3DiP0r-ACbf-quwQ8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "734101582500-tmp74c3c1vupth5h8cq5phm38lqqm0tk.apps.googleusercontent.com",
+              "client_id": "280051661444-h2o9cuinevmev5d8fft11sjba946ohs9.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
