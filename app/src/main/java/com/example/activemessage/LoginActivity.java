@@ -1,8 +1,5 @@
 package com.example.activemessage;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -18,11 +15,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -34,7 +33,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class LoginActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN =100 ;
@@ -106,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
     private void showRecoverPasswordDialog()
     {
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        builder.setTitle("Şifremi Unuttum");
+        builder.setTitle("Åifremi Unuttum");
 
         LinearLayout linearLayout=new LinearLayout(this);
         EditText emailGir=new EditText(this);
@@ -118,14 +117,14 @@ public class LoginActivity extends AppCompatActivity {
         builder.setView(linearLayout);
 
 
-        builder.setPositiveButton("Sıfırla", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("SÄ±fÄ±rla", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
             String email=emailGir.getText().toString().trim();
             beginRecovery(email);
             }
         });
-        builder.setNegativeButton("İptal", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Ä°ptal", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
             dialog.dismiss();
@@ -135,14 +134,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void beginRecovery(String email) {
-        loadingBar.setMessage("Şifre Gönderiliyor...");
+        loadingBar.setMessage("Åifre GÃ¶nderiliyor...");
         loadingBar.show();
         mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 loadingBar.dismiss();
                 if (task.isSuccessful()){
-                    Toast.makeText(LoginActivity.this, "Sıfırlama Bağlantısı Emaile Gönderildi.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "SÄ±fÄ±rlama BaÄŸlantÄ±sÄ± Emaile GÃ¶nderildi.", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
@@ -165,16 +164,16 @@ public class LoginActivity extends AppCompatActivity {
         String password=UserPassword.getText().toString();
         if(TextUtils.isEmpty(email))
         {
-            Toast.makeText(this,"Lütfen geçerli bir email giriniz!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"LÃ¼tfen geÃ§erli bir email giriniz!",Toast.LENGTH_SHORT).show();
         }
         if(TextUtils.isEmpty(password))
         {
-            Toast.makeText(this,"Lütfen geçerli bir şifre giriniz!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"LÃ¼tfen geÃ§erli bir ÅŸifre giriniz!",Toast.LENGTH_SHORT).show();
         }
         else
             {  /*firebase login check*/
-                loadingBar.setTitle("Giriş");
-                loadingBar.setMessage("Giriş Yapılıyor,Lütfen Bekleyiniz...");
+                loadingBar.setTitle("GiriÅŸ");
+                loadingBar.setMessage("GiriÅŸ YapÄ±lÄ±yor,LÃ¼tfen Bekleyiniz...");
                 loadingBar.setCanceledOnTouchOutside(false);
                 loadingBar.show();
                 mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -184,7 +183,14 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful())
                         {
                             String currentUserID=mAuth.getCurrentUser().getUid();
-                            String deviceToken= FirebaseInstanceId.getInstance().getToken();
+                            FirebaseMessaging.getInstance().getToken()
+                                    .addOnCompleteListener(new OnCompleteListener<String>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<String> task) {
+                                            if (!task.isSuccessful()) {
+                                            }
+                                            String deviceToken = task.getResult();
+
                             UsersRef.child(currentUserID).child("device_token")
                                     .setValue(deviceToken).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -193,11 +199,20 @@ public class LoginActivity extends AppCompatActivity {
                                     if (task.isSuccessful())
                                     {
                                         SendUserToMainActivity();
-                                        Toast.makeText(LoginActivity.this,"Başarıyla Giriş Yaptınız.",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(LoginActivity.this,"BaÅŸarÄ±yla GiriÅŸ YaptÄ±nÄ±z.",Toast.LENGTH_SHORT).show();
                                         loadingBar.dismiss();
                                     }
                                 }
                             });
+
+
+
+
+                                        }
+                                    });
+
+
+
 
                         }
                         else
@@ -271,7 +286,7 @@ public class LoginActivity extends AppCompatActivity {
                             //updateUI(user);
                         } else {
 
-                            Toast.makeText(LoginActivity.this, "Giriş Başarısız!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "GiriÅŸ BaÅŸarÄ±sÄ±z!", Toast.LENGTH_SHORT).show();
                             //updateUI(null);
                         }
                     }
