@@ -19,9 +19,7 @@
   <img  alt="9" width="200px"  src="https://user-images.githubusercontent.com/49868097/185794987-d6120cb2-e38a-4687-b8f3-f87dac66e6be.png"/>
   <img  alt="10" width="200px"  src="https://user-images.githubusercontent.com/49868097/185795083-243139e7-1ab1-4bd2-8431-c909a3b748ab.png"/>
  </p>
-<h2 align="left">Download</h2>
-<p align="left">  
-<a href="https://easyupload.io/xh4kkl" download>app-debug.apk</a><br>
+
 
 
 
